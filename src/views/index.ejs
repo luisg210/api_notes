@@ -1,0 +1,51 @@
+<%- include('header.ejs') %>
+
+<div class="container pt-4">
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <h2 class="text-center">Users</h2>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <button class="btn btn-success btn-lg" onclick="save()">Nuevo</button>
+    </div>
+  </div>
+
+  <div class="row">         
+    <div class="col-md-12 table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="bg-dark text-white">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User</th>
+            <th colspan="2" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data.length> 0) { for (let i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%= data[i]._id %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].user %></td>
+            <td>
+                <button class="btn btn-primary btn-sm">Actualizar</button>
+            </td>
+            <td>
+                <button class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
+          </tr>
+          <% } } else { %>
+          <tr>
+            <td colspan="4">No data available</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('footer.ejs') %>
