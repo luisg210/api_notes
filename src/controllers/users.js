@@ -21,8 +21,8 @@ const login = async ( req, res = response ) => {
         user_ = await User.findOne( { user } );
 
         if (user_) {
-            const validPass = bcrypt.compare( password, user_.password );
-
+            const validPass = await bcrypt.compare( password, user_.password );
+            console.log('Res token', validPass);
             if ( validPass ) {
                 token = generateToken( user_.id, user_.name );
                 ok = true;
